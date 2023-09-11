@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hivedemo/db/functions/db_functions.dart';
 
 import 'Widgets/AddStudentWidget.dart';
 import 'Widgets/ListStudentWidget.dart';
@@ -8,6 +9,7 @@ class screen_main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getAllStudents();
     return Scaffold(
       body: SafeArea(child: Column(children: [
         AddStudentWidget(),
