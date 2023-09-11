@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hivedemo/db/functions/db_functions.dart';
+import 'package:hivedemo/db/model/data_model.dart';
 
 class AddStudentWidget extends StatelessWidget {
    AddStudentWidget({super.key});
@@ -40,5 +42,8 @@ class AddStudentWidget extends StatelessWidget {
       return;
     }
     print('$_name $_age');
+
+  final _student = StudentModel(name: _name, age: _age);
+    addStudent(_student);
   }
 }

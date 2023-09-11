@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:hivedemo/db/functions/db_functions.dart';
+
+import '../../db/model/data_model.dart';
 
 class ListStudentWidget extends StatelessWidget {
   const ListStudentWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(itemBuilder: (ctx, index){
-      return ListTile(
-      title: Text('Name $index'),
-      subtitle: Text('Age: $index'),
-      );
-    }, separatorBuilder: (ctx, index){
-      return const Divider();
-    }, itemCount: 50);
+    return ValueListenableBuilder(
+      valueListenable: studentListNotifier,
+      builder: (BuildContext ctx, List<StudentModel> studentList, Widget? child){
+      return ListView.separated(itemBuilder: (ctx, index){
+        final data = studentList[index];
+        return ListTile(
+        title: Text(data.name),
+        subtitle: Text(data.age),
+        );
+      }, separatorBuilder: (ctx, index){
+        return const Divider();
+      }, itemCount: studentList.length);
+      }
+    );
   }
 }
